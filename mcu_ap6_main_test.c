@@ -59,7 +59,7 @@ while(1)
     }
     }
 }					
-#endif
+#endif  // !TEST_PUTCH
 
 #ifdef  TEST_PUTS
 /* Programme Principal			*/
@@ -78,4 +78,26 @@ while(1)
     }
 }					
 
-#endif
+#endif  // !TEST_PUTS
+
+#ifdef TEST_RX_IRQ
+/* Programme Principal			*/
+extern uint8_t  CarRec;
+int main(void)
+{
+// Variables locales au main
+    
+Initialiser();		// Appel fonction d'initialisation
+
+// For checking, at startup LEDs should display 0x55
+LATA = 0x55;
+
+while(1)
+    {
+    if (CarRec != 0){
+        LATA = CarRec;
+        CarRec = 0;
+    }
+    }
+}					
+#endif  // !TEST_RX_IRQ
