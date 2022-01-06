@@ -1,8 +1,8 @@
 /**
- * @file Template_lib_Appli_H.h 
+ * @file     
  * @author 	Alexis ROLLAND
- * @date	2021-12-30
- * @brief 	Template for PIC24 main app
+ * @date	2022
+ * @brief 	
  *  
  *
  */
