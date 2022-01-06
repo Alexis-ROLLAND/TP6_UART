@@ -33,7 +33,7 @@ uart_err_t  uart_init(uart_id_t uart_id, uart_config_t *pUartCFG)
             U2BRG = pUartCFG->UxBRG;
             break;
         default: 
-            return UART_ERROR;
+            return UART_UNKNOWN_UART;
             break;
     }
     return UART_OK;
@@ -69,7 +69,7 @@ uart_err_t      uart_putch(uart_id_t uart_id, uint8_t Car, bool_t BlockingMode)
                 U2TXREG = Car;
             }
         default: 
-            return UART_ERROR;
+            return UART_UNKNOWN_UART;
             break;
             
     }

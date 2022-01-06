@@ -14,7 +14,7 @@
 
 typedef enum    {_UART1, _UART2} uart_id_t;
 typedef enum    {true, false} bool_t;
-typedef enum    {UART_OK, UART_ERROR, UART_TX_FIFO_FULL} uart_err_t; 
+typedef enum    {UART_OK, UART_ERROR, UART_UNKNOWN_UART, UART_TX_FIFO_FULL} uart_err_t; 
 
 typedef struct{
     uint16_t    UxMODE;
