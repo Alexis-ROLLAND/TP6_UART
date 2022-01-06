@@ -40,19 +40,42 @@
 
 
 
-
+#ifdef  TEST_PUTCH
 /* Programme Principal			*/
 int main(void)
 {
 // Variables locales au main
-
+    uint8_t Car;
+    
 
 
 Initialiser();		// Appel fonction d'initialisation
 
 while(1)
     {
+    for (Car = 'A';Car <= 'Z';Car++){
+        uart_putch(USED_UART, Car, true);
+        __delay_ms(500);
+    }
+    }
+}					
+#endif
 
+#ifdef  TEST_PUTS
+/* Programme Principal			*/
+int main(void)
+{
+// Variables locales au main
+    
+Initialiser();		// Appel fonction d'initialisation
+
+while(1)
+    {
+    uart_puts(USED_UART,(uint8_t*)"Hello World\n");
+    
+    __delay_ms(500);
+    
     }
 }					
 
+#endif

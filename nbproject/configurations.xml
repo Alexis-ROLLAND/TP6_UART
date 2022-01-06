@@ -35,7 +35,7 @@
         <targetDevice>PIC24FJ128GA010</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>noID</platformTool>
+        <platformTool>PKOBSKDEPlatformTool</platformTool>
         <languageToolchain>XC16</languageToolchain>
         <languageToolchainVersion>1.61</languageToolchainVersion>
         <platform>3</platform>

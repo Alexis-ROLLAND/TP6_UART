@@ -58,16 +58,30 @@ uart_err_t  uart_init(uart_id_t uart_id, uart_config_t *pUartCFG);
 
  
  /**
- * @brief  
- * 
- * @param	
- * 
- * @return   
- *
- */
+  * @brief  Send one character on a choosen UART 
+  * 
+  * @param[in]   uart_id
+  * @param[in]   Character to send
+  * @param[in]   Send in blocking mode (true) or non blocking mode (false)	
+  *  
+  * @return     UART_OK on success or UART_TX_FIFO_FULL in non blocking mode if Tx FIFO is full or UART_UNKNOWN_UART
+  *
+  */
 uart_err_t      uart_putch(uart_id_t uart_id, uint8_t Car, bool_t BlockingMode);
 
  
+ /**
+ * @brief  Sends a C Formatted string, blocking mode only
+ * 
+  * @param[in]   uart_id
+ * @param[in]   Address of the string to send	
+ * 
+ * @return   UART_OK or UART_UNKNOWN_UART
+ *
+ */
+uart_err_t      uart_puts(uart_id_t uart_id, uint8_t *pString);
+
+
  /**
  * @brief  
  * 
@@ -76,6 +90,8 @@ uart_err_t      uart_putch(uart_id_t uart_id, uint8_t Car, bool_t BlockingMode);
  * @return   
  *
  */
+
+
  
  
 

@@ -77,3 +77,26 @@ uart_err_t      uart_putch(uart_id_t uart_id, uint8_t Car, bool_t BlockingMode)
     return UART_OK;
 }
 
+uart_err_t      uart_puts(uart_id_t uart_id, uint8_t *pString)
+{
+    switch (uart_id)
+    {
+        case _UART1:
+            while(*pString != '\0'){
+                while (U1STAbits.UTXBF == 1);   // Attente libération buffer
+                U1TXREG = *pString;
+                pString++;
+            }
+            break;
+        case _UART2:
+            while(*pString != '\0'){
+                while (U2STAbits.UTXBF == 1);   // Attente libération buffer
+                U2TXREG = *pString;
+                pString++;
+            }
+            break;
+        default: return UART_UNKNOWN_UART;
+    }
+    return UART_OK;
+}
+
