@@ -1,13 +1,13 @@
 /**
- * @file Template_lib_std_H.h 
- * @author 	Alexis ROLLAND
- * @date	2021-12-30
- * @brief 	Template for PIC24 main app
+ * @file 
+ * @author 	
+ * @date	
+ * @brief 	
  *  
  *
  */
 
-
+//------------------------------------------------------------------------------
 #ifndef	__LIB_UART_PIC24LL_H__
 #define	__LIB_UART_PIC24LL_H__
 #include <xc.h>
@@ -45,7 +45,7 @@ typedef struct{
     uint8_t     RxIrqPrio;    /**< Rx Interrupt priority level (between 0 and 7) */
 } uart_config_t;
 
-
+//------------------------------------------------------------------------------
 
 /**
  * @brief   Configuration d'un UART  
@@ -58,6 +58,7 @@ typedef struct{
  */
 uart_err_t  uart_init(uart_id_t uart_id, uart_config_t *pUartCFG);
 
+//------------------------------------------------------------------------------
  /**
  * @brief  
  * 
@@ -68,6 +69,7 @@ uart_err_t  uart_init(uart_id_t uart_id, uart_config_t *pUartCFG);
  */
 uart_err_t  uart_set_rx_interrupt(uart_id_t uart_id,uart_config_t *pUartCFG);
 
+//------------------------------------------------------------------------------
  /**
   * @brief  Send one character on a choosen UART 
   * 
@@ -80,7 +82,7 @@ uart_err_t  uart_set_rx_interrupt(uart_id_t uart_id,uart_config_t *pUartCFG);
   */
 uart_err_t      uart_putch(uart_id_t uart_id, uint8_t Car, bool_t BlockingMode);
 
- 
+//------------------------------------------------------------------------------
  /**
  * @brief  Sends a C Formatted string, blocking mode only
  * 
@@ -92,7 +94,7 @@ uart_err_t      uart_putch(uart_id_t uart_id, uint8_t Car, bool_t BlockingMode);
  */
 uart_err_t      uart_puts(uart_id_t uart_id, uint8_t *pString);
 
-
+//------------------------------------------------------------------------------
  /**
  * @brief  
  * 
@@ -102,6 +104,7 @@ uart_err_t      uart_puts(uart_id_t uart_id, uint8_t *pString);
  *
  */
 
+//------------------------------------------------------------------------------
 /**
  * @brief  
  * 
@@ -111,7 +114,9 @@ uart_err_t      uart_puts(uart_id_t uart_id, uint8_t *pString);
  *
  */
  
- 
+//------------------------------------------------------------------------------
+
+
 
 #endif
 

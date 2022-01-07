@@ -1,7 +1,7 @@
 /**
  * @file     
- * @author 	Alexis ROLLAND
- * @date	2022
+ * @author 	
+ * @date	
  * @brief 	
  *  
  *
@@ -10,9 +10,9 @@
 #define	__LIB_MCU_AP6_H__
 
 //-----------------------------------------------------------------------------
-//#define TEST_PUTCH
+#define TEST_PUTCH
 //#define TEST_PUTS
-#define TEST_RX_IRQ
+
 //-----------------------------------------------------------------------------
 
 #ifndef FCY

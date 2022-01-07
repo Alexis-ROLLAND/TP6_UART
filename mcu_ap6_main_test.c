@@ -1,14 +1,15 @@
 /**
- * @file mcu_ap6_main_test.c 
- * @author 	Alexis ROLLAND
+ * @file     
+ * @author 	
  * @date	
  * @brief 	
  *  
  *
  */
-
+//------------------------------------------------------------------------------
 #include "lib_mcu_ap6.h"   // Inclusion du fichier .h "Applicatif" renommé
 
+//------------------------------------------------------------------------------
 /**
  * Insérer Ici les bits de configuration pour le MCU 						  
  * Copier / Coller depuis le fichier Config_Pic24.txt					  
@@ -44,23 +45,22 @@
 /* Programme Principal			*/
 int main(void)
 {
-// Variables locales au main
+    // Variables locales au main
     uint8_t Car;
-    
 
+    Initialiser();		// Appel fonction d'initialisation
 
-Initialiser();		// Appel fonction d'initialisation
-
-while(1)
-    {
-    for (Car = 'A';Car <= 'Z';Car++){
+    while(1)
+        {
+        for (Car = 'A';Car <= 'Z';Car++){
         uart_putch(USED_UART, Car, true);
         __delay_ms(500);
-    }
+        }
     }
 }					
 #endif  // !TEST_PUTCH
 
+//------------------------------------------------------------------------------
 #ifdef  TEST_PUTS
 /* Programme Principal			*/
 int main(void)
@@ -80,24 +80,5 @@ while(1)
 
 #endif  // !TEST_PUTS
 
-#ifdef TEST_RX_IRQ
-/* Programme Principal			*/
-extern uint8_t  CarRec;
-int main(void)
-{
-// Variables locales au main
-    
-Initialiser();		// Appel fonction d'initialisation
 
-// For checking, at startup LEDs should display 0x55
-LATA = 0x55;
 
-while(1)
-    {
-    if (CarRec != 0){
-        LATA = CarRec;
-        CarRec = 0;
-    }
-    }
-}					
-#endif  // !TEST_RX_IRQ
