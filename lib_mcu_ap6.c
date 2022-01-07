@@ -18,6 +18,7 @@
 
 
 /*	Implémentation du code */
+//------------------------------------------------------------------------------
 #ifdef  TEST_PUTCH
 void Initialiser(void)
 {
@@ -30,7 +31,7 @@ void Initialiser(void)
     uart_init(USED_UART, &uart_cfg);
 }
 #endif // !TEST_PUTCH
-
+//------------------------------------------------------------------------------
 #ifdef  TEST_PUTS
 void Initialiser(void)
 {
@@ -43,7 +44,7 @@ void Initialiser(void)
     uart_init(USED_UART, &uart_cfg);
 }
 #endif // !TEST_PUTS
-
+//------------------------------------------------------------------------------
 #ifdef TEST_RX_IRQ
 
 uint8_t CarRec = 0;
@@ -58,16 +59,33 @@ void Initialiser(void)
     
     uart_cfg.UxMODE = 0x8008;   // BRG High Speed Mode
     uart_cfg.UxSTA = 0x0400;
-    uart_cfg.UxBRG = 52;    // 19200bps @Fcy=4MHz /!\ 52 != 51 /!\
+    uart_cfg.UxBRG = 52;    // 19200bps @Fcy=4MHz /!\ 52 != 51 
     uart_cfg.RxIrqPrio = 4; // default value
     
     uart_init(USED_UART, &uart_cfg);
-    uart_set_rx_interrupt(USED_UART,&uart_cfg);
+    uart_set_rx_interrupt(USED_UART, &uart_cfg);
 }
 
+// ISR if UART1 is used
+void _ISR __attribute__((no_auto_psv))  _U1RXInterrupt(void)
+{ 
+    CarRec = U1RXREG;
+    IFS0bits.U1RXIF = 0;
+}
+
+/*-----------------------------------------------------------------------------
+// ISR if UART2 is used
 void _ISR __attribute__((no_auto_psv))  _U2RXInterrupt(void)
 { 
     CarRec = U2RXREG;
     IFS1bits.U2RXIF = 0;
 }
+------------------------------------------------------------------------------*/
+
 #endif  // !TEST_RX_IRQ
+//------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------
+

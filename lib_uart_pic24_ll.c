@@ -18,6 +18,7 @@
 
 
 /*	Implémentation du code */
+//------------------------------------------------------------------------------
 uart_err_t  uart_init(uart_id_t uart_id, uart_config_t *pUartCFG)
 {
     switch (uart_id)
@@ -39,6 +40,7 @@ uart_err_t  uart_init(uart_id_t uart_id, uart_config_t *pUartCFG)
     return UART_OK;
 }
 
+//------------------------------------------------------------------------------
 uart_err_t  uart_set_rx_interrupt(uart_id_t uart_id,uart_config_t *pUartCFG)
 {
     if (pUartCFG->RxIrqPrio > 7) return UART_BAD_PRIO;
@@ -61,6 +63,8 @@ uart_err_t  uart_set_rx_interrupt(uart_id_t uart_id,uart_config_t *pUartCFG)
     }
     return UART_OK;
 }
+
+//------------------------------------------------------------------------------
 uart_err_t      uart_putch(uart_id_t uart_id, uint8_t Car, bool_t BlockingMode)
 {
     switch (uart_id)
@@ -99,6 +103,7 @@ uart_err_t      uart_putch(uart_id_t uart_id, uint8_t Car, bool_t BlockingMode)
     return UART_OK;
 }
 
+//------------------------------------------------------------------------------
 uart_err_t      uart_puts(uart_id_t uart_id, uint8_t *pString)
 {
     switch (uart_id)
@@ -121,4 +126,10 @@ uart_err_t      uart_puts(uart_id_t uart_id, uint8_t *pString)
     }
     return UART_OK;
 }
+//------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------
+
 

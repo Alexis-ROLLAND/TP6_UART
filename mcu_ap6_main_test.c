@@ -8,7 +8,7 @@
  */
 
 #include "lib_mcu_ap6.h"   // Inclusion du fichier .h "Applicatif" renommé
-
+//------------------------------------------------------------------------------
 /**
  * Insérer Ici les bits de configuration pour le MCU 						  
  * Copier / Coller depuis le fichier Config_Pic24.txt					  
@@ -39,7 +39,7 @@
 /* Déclarations des variables globales 	*/
 
 
-
+//------------------------------------------------------------------------------
 #ifdef  TEST_PUTCH
 /* Programme Principal			*/
 int main(void)
@@ -60,7 +60,7 @@ while(1)
     }
 }					
 #endif  // !TEST_PUTCH
-
+//------------------------------------------------------------------------------
 #ifdef  TEST_PUTS
 /* Programme Principal			*/
 int main(void)
@@ -79,7 +79,7 @@ while(1)
 }					
 
 #endif  // !TEST_PUTS
-
+//------------------------------------------------------------------------------
 #ifdef TEST_RX_IRQ
 /* Programme Principal			*/
 extern uint8_t  CarRec;
@@ -101,3 +101,5 @@ while(1)
     }
 }					
 #endif  // !TEST_RX_IRQ
+//------------------------------------------------------------------------------
+
