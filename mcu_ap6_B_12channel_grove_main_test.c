@@ -1,5 +1,5 @@
 /**
- * @file mcu_ap6_main_test.c 
+ * @file    
  * @author 	Alexis ROLLAND
  * @date	
  * @brief 	
@@ -7,7 +7,7 @@
  *
  */
 
-#include "lib_mcu_ap6.h"   // Inclusion du fichier .h "Applicatif" renommé
+#include "lib_test_grove_12channel_cap_touch.h"   // Inclusion du fichier .h "Applicatif" renommé
 //------------------------------------------------------------------------------
 /**
  * Insérer Ici les bits de configuration pour le MCU 						  
@@ -39,67 +39,22 @@
 /* Déclarations des variables globales 	*/
 
 
-//------------------------------------------------------------------------------
-#ifdef  TEST_PUTCH
 /* Programme Principal			*/
 int main(void)
 {
 // Variables locales au main
-    uint8_t Car;
-    
-
+grove_12channel_touch_err_t  Res;    
+uint8_t CarRec;
+uint8_t NbCarRec = 0;
 
 Initialiser();		// Appel fonction d'initialisation
 
 while(1)
     {
-    for (Car = 'A';Car <= 'Z';Car++){
-        uart_putch(USED_UART, Car, true);
-        __delay_ms(500);
-    }
-    }
-}					
-#endif  // !TEST_PUTCH
-//------------------------------------------------------------------------------
-#ifdef  TEST_PUTS
-/* Programme Principal			*/
-int main(void)
-{
-// Variables locales au main
-    
-Initialiser();		// Appel fonction d'initialisation
-
-while(1)
+    Res = grove_12channel_touch_getData(&CarRec);
+    if (Res == GROVE_12CHANNEL_TOUCH_OK)
     {
-    uart_puts(USED_UART,(uint8_t*)"Hello World\n");
-    
-    __delay_ms(500);
-    
-    }
-}					
-
-#endif  // !TEST_PUTS
-//------------------------------------------------------------------------------
-#ifdef TEST_RX_IRQ
-/* Programme Principal			*/
-extern uint8_t  CarRec;
-int main(void)
-{
-// Variables locales au main
-    
-Initialiser();		// Appel fonction d'initialisation
-
-// For checking, at startup LEDs should display 0x55
-LATA = 0x55;
-
-while(1)
-    {
-    if (CarRec != 0){
-        LATA = CarRec;
-        CarRec = 0;
+        NbCarRec++;
     }
     }
 }					
-#endif  // !TEST_RX_IRQ
-//------------------------------------------------------------------------------
-

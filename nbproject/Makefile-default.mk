@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=lib_mcu_ap6.c lib_uart_pic24_ll.c mcu_ap6_main_test.c
+SOURCEFILES_QUOTED_IF_SPACED=lib_uart_pic24_ll.c lib_grove_12channel_cap_touch.c mcu_ap6_B_12channel_grove_main_test.c lib_test_grove_12channel_cap_touch.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/lib_mcu_ap6.o ${OBJECTDIR}/lib_uart_pic24_ll.o ${OBJECTDIR}/mcu_ap6_main_test.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/lib_mcu_ap6.o.d ${OBJECTDIR}/lib_uart_pic24_ll.o.d ${OBJECTDIR}/mcu_ap6_main_test.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/lib_uart_pic24_ll.o ${OBJECTDIR}/lib_grove_12channel_cap_touch.o ${OBJECTDIR}/mcu_ap6_B_12channel_grove_main_test.o ${OBJECTDIR}/lib_test_grove_12channel_cap_touch.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/lib_uart_pic24_ll.o.d ${OBJECTDIR}/lib_grove_12channel_cap_touch.o.d ${OBJECTDIR}/mcu_ap6_B_12channel_grove_main_test.o.d ${OBJECTDIR}/lib_test_grove_12channel_cap_touch.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/lib_mcu_ap6.o ${OBJECTDIR}/lib_uart_pic24_ll.o ${OBJECTDIR}/mcu_ap6_main_test.o
+OBJECTFILES=${OBJECTDIR}/lib_uart_pic24_ll.o ${OBJECTDIR}/lib_grove_12channel_cap_touch.o ${OBJECTDIR}/mcu_ap6_B_12channel_grove_main_test.o ${OBJECTDIR}/lib_test_grove_12channel_cap_touch.o
 
 # Source Files
-SOURCEFILES=lib_mcu_ap6.c lib_uart_pic24_ll.c mcu_ap6_main_test.c
+SOURCEFILES=lib_uart_pic24_ll.c lib_grove_12channel_cap_touch.c mcu_ap6_B_12channel_grove_main_test.c lib_test_grove_12channel_cap_touch.c
 
 
 
@@ -95,42 +95,54 @@ MP_LINKER_FILE_OPTION=,--script=p24FJ128GA010.gld
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/lib_mcu_ap6.o: lib_mcu_ap6.c  .generated_files/571dcfd8e0507869a09a0377dde8c24d6a694c39.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/lib_mcu_ap6.o.d 
-	@${RM} ${OBJECTDIR}/lib_mcu_ap6.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  lib_mcu_ap6.c  -o ${OBJECTDIR}/lib_mcu_ap6.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib_mcu_ap6.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
-	
 ${OBJECTDIR}/lib_uart_pic24_ll.o: lib_uart_pic24_ll.c  .generated_files/81c15a34678361060a9b90be0135ef7ed4b6822f.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/lib_uart_pic24_ll.o.d 
 	@${RM} ${OBJECTDIR}/lib_uart_pic24_ll.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  lib_uart_pic24_ll.c  -o ${OBJECTDIR}/lib_uart_pic24_ll.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib_uart_pic24_ll.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
-${OBJECTDIR}/mcu_ap6_main_test.o: mcu_ap6_main_test.c  .generated_files/a64eae84850df5cb5381ca34ac87f9627169f14c.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
+${OBJECTDIR}/lib_grove_12channel_cap_touch.o: lib_grove_12channel_cap_touch.c  .generated_files/8a730d9d2d2af1669683bb5180178c297629a324.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/mcu_ap6_main_test.o.d 
-	@${RM} ${OBJECTDIR}/mcu_ap6_main_test.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  mcu_ap6_main_test.c  -o ${OBJECTDIR}/mcu_ap6_main_test.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/mcu_ap6_main_test.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	@${RM} ${OBJECTDIR}/lib_grove_12channel_cap_touch.o.d 
+	@${RM} ${OBJECTDIR}/lib_grove_12channel_cap_touch.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  lib_grove_12channel_cap_touch.c  -o ${OBJECTDIR}/lib_grove_12channel_cap_touch.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib_grove_12channel_cap_touch.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/mcu_ap6_B_12channel_grove_main_test.o: mcu_ap6_B_12channel_grove_main_test.c  .generated_files/d49583eb70aaadf79f880e6f299e3b018034ab61.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/mcu_ap6_B_12channel_grove_main_test.o.d 
+	@${RM} ${OBJECTDIR}/mcu_ap6_B_12channel_grove_main_test.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  mcu_ap6_B_12channel_grove_main_test.c  -o ${OBJECTDIR}/mcu_ap6_B_12channel_grove_main_test.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/mcu_ap6_B_12channel_grove_main_test.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/lib_test_grove_12channel_cap_touch.o: lib_test_grove_12channel_cap_touch.c  .generated_files/b54c0dcea5800ac012e07192995feff96284e1d6.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/lib_test_grove_12channel_cap_touch.o.d 
+	@${RM} ${OBJECTDIR}/lib_test_grove_12channel_cap_touch.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  lib_test_grove_12channel_cap_touch.c  -o ${OBJECTDIR}/lib_test_grove_12channel_cap_touch.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib_test_grove_12channel_cap_touch.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
 else
-${OBJECTDIR}/lib_mcu_ap6.o: lib_mcu_ap6.c  .generated_files/304fbd87bba8ec10b121a4cba9cd9164f5e06e9f.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/lib_mcu_ap6.o.d 
-	@${RM} ${OBJECTDIR}/lib_mcu_ap6.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  lib_mcu_ap6.c  -o ${OBJECTDIR}/lib_mcu_ap6.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib_mcu_ap6.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
-	
 ${OBJECTDIR}/lib_uart_pic24_ll.o: lib_uart_pic24_ll.c  .generated_files/d5fc0bdfbdd82823703d6e05f4c91b7d2532ad20.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/lib_uart_pic24_ll.o.d 
 	@${RM} ${OBJECTDIR}/lib_uart_pic24_ll.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  lib_uart_pic24_ll.c  -o ${OBJECTDIR}/lib_uart_pic24_ll.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib_uart_pic24_ll.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
-${OBJECTDIR}/mcu_ap6_main_test.o: mcu_ap6_main_test.c  .generated_files/4eb577be8b44602e0b5bb23dfa70af39f5b94797.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
+${OBJECTDIR}/lib_grove_12channel_cap_touch.o: lib_grove_12channel_cap_touch.c  .generated_files/19c1e3a7aa092b562af7c77c822929f6b15d6b1a.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/mcu_ap6_main_test.o.d 
-	@${RM} ${OBJECTDIR}/mcu_ap6_main_test.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  mcu_ap6_main_test.c  -o ${OBJECTDIR}/mcu_ap6_main_test.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/mcu_ap6_main_test.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	@${RM} ${OBJECTDIR}/lib_grove_12channel_cap_touch.o.d 
+	@${RM} ${OBJECTDIR}/lib_grove_12channel_cap_touch.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  lib_grove_12channel_cap_touch.c  -o ${OBJECTDIR}/lib_grove_12channel_cap_touch.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib_grove_12channel_cap_touch.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/mcu_ap6_B_12channel_grove_main_test.o: mcu_ap6_B_12channel_grove_main_test.c  .generated_files/20b505e7af0cea8ec8dd555a6ab53ef00737e063.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/mcu_ap6_B_12channel_grove_main_test.o.d 
+	@${RM} ${OBJECTDIR}/mcu_ap6_B_12channel_grove_main_test.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  mcu_ap6_B_12channel_grove_main_test.c  -o ${OBJECTDIR}/mcu_ap6_B_12channel_grove_main_test.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/mcu_ap6_B_12channel_grove_main_test.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/lib_test_grove_12channel_cap_touch.o: lib_test_grove_12channel_cap_touch.c  .generated_files/879cd90e448e206b280c693a532cec1b860b73a0.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/lib_test_grove_12channel_cap_touch.o.d 
+	@${RM} ${OBJECTDIR}/lib_test_grove_12channel_cap_touch.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  lib_test_grove_12channel_cap_touch.c  -o ${OBJECTDIR}/lib_test_grove_12channel_cap_touch.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib_test_grove_12channel_cap_touch.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
 endif
 

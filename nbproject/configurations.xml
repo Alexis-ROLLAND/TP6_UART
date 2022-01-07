@@ -4,8 +4,9 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>lib_mcu_ap6.h</itemPath>
       <itemPath>lib_uart_pic24_ll.h</itemPath>
+      <itemPath>lib_grove_12channel_cap_touch.h</itemPath>
+      <itemPath>lib_test_grove_12channel_cap_touch.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -14,9 +15,10 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>lib_mcu_ap6.c</itemPath>
       <itemPath>lib_uart_pic24_ll.c</itemPath>
-      <itemPath>mcu_ap6_main_test.c</itemPath>
+      <itemPath>lib_grove_12channel_cap_touch.c</itemPath>
+      <itemPath>mcu_ap6_B_12channel_grove_main_test.c</itemPath>
+      <itemPath>lib_test_grove_12channel_cap_touch.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

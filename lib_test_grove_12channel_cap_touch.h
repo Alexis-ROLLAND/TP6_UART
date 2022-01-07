@@ -6,13 +6,11 @@
  *  
  *
  */
-#ifndef	__LIB_MCU_AP6_H__
-#define	__LIB_MCU_AP6_H__
+#ifndef	__LIB_TEST_GROVE_12_CHANNEL_TOUCH_H__
+#define	__LIB_TEST_GROVE_12_CHANNEL_TOUCH_H__
 
 //-----------------------------------------------------------------------------
-//#define TEST_PUTCH
-//#define TEST_PUTS
-#define TEST_RX_IRQ
+
 //-----------------------------------------------------------------------------
 
 #ifndef FCY
@@ -22,10 +20,10 @@
 #include <libpic30.h>
 #include <xc.h>
 
-#include "lib_uart_pic24_ll.h"
+#include "lib_grove_12channel_cap_touch.h"
 
 
-#define USED_UART _UART1
+
 
 
 //------------------------------------------------------------------------------
