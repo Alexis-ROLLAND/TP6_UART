@@ -73,6 +73,7 @@ void _ISR __attribute__((no_auto_psv))  _U1RXInterrupt(void)
     IFS0bits.U1RXIF = 0;
 }
 
+
 /*-----------------------------------------------------------------------------
 // ISR if UART2 is used
 void _ISR __attribute__((no_auto_psv))  _U2RXInterrupt(void)
