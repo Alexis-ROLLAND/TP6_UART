@@ -14,7 +14,7 @@
 
 
 /* Déclarations des variables globales 	*/
-const uint16_t  tabBRG[6]={25, 103, 207, 312, 416, 832};
+const uint16_t  tabBRG[6]={25, 104, 207, 312, 416, 832};
 const uint8_t   tabCar[13]={0,'1','2','3','4','5','6','7','8','9','*','0','#'};
 
 uart_config_t   uart_cfg;

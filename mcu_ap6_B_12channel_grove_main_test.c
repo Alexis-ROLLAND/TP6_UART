@@ -47,6 +47,9 @@ grove_12channel_touch_err_t  Res;
 uint8_t CarRec;
 uint8_t NbCarRec = 0;
 
+TRISA = 0xFF00;
+LATA = 0;
+
 Initialiser();		// Appel fonction d'initialisation
 
 while(1)
@@ -55,6 +58,8 @@ while(1)
     if (Res == GROVE_12CHANNEL_TOUCH_OK)
     {
         NbCarRec++;
+        LATA++;
+        
     }
     }
 }					
