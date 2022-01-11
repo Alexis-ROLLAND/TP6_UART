@@ -7,7 +7,7 @@
  *
  */
 
-#include "lib_mcu_ap6.h"   // Inclusion du fichier .h "Applicatif" renommé
+#include "lib_test_SamlTC.h"   // Inclusion du fichier .h "Applicatif" renommé
 //------------------------------------------------------------------------------
 /**
  * Insérer Ici les bits de configuration pour le MCU 						  
@@ -19,7 +19,7 @@
 #pragma config POSCMOD = HS         // Primary Oscillator Select (EC, XT, HS, NONE)
 #pragma config OSCIOFNC = ON        // Primary Oscillator Output Function (ON, OFF)
 #pragma config FCKSM = CSDCMD       // Clock Switching and Monitor (CSECME, CSECMD, CSDCMD)
-#pragma config FNOSC = PRI          // Oscillator Select (FRC, FRCPLL, PRI, PRIPLL, SOSC, LPRC, FRCDIV)
+#pragma config FNOSC = PRIPLL       // Oscillator Select (FRC, FRCPLL, PRI, PRIPLL, SOSC, LPRC, FRCDIV)
 #pragma config IESO = OFF           // Internal External Switch Over Mode (ON, OFF)
 #pragma config WDTPS = PS256        // Watchdog Timer Postscaler (PS1, PS2, PS4, PS8,..., PS32768)
 #pragma config FWPSA = PR32         // WDT Prescaler (PR32, PR128)
@@ -40,12 +40,12 @@
 
 
 //------------------------------------------------------------------------------
-#ifdef  TEST_PUTCH
+
 /* Programme Principal			*/
 int main(void)
 {
 // Variables locales au main
-    uint8_t Car;
+    saml_touch_click_Status_t Status;
     
 
 
@@ -53,53 +53,22 @@ Initialiser();		// Appel fonction d'initialisation
 
 while(1)
     {
-    for (Car = 'A';Car <= 'Z';Car++){
-        uart_putch(USED_UART, Car, true);
-        __delay_ms(500);
-    }
-    }
-}					
-#endif  // !TEST_PUTCH
-//------------------------------------------------------------------------------
-#ifdef  TEST_PUTS
-/* Programme Principal			*/
-int main(void)
-{
-// Variables locales au main
-    
-Initialiser();		// Appel fonction d'initialisation
-
-while(1)
+    __delay_ms(200);
+    if (saml_touch_click_check() == SAML_TOUCH_CLICK_DATA_AVAILABLE)
     {
-    uart_puts(USED_UART,(uint8_t*)"Hello World\n");
-    
-    __delay_ms(500);
-    
-    }
-}					
-
-#endif  // !TEST_PUTS
-//------------------------------------------------------------------------------
-#ifdef TEST_RX_IRQ
-/* Programme Principal			*/
-extern uint8_t  CarRec;
-int main(void)
-{
-// Variables locales au main
-    
-Initialiser();		// Appel fonction d'initialisation
-
-// For checking, at startup LEDs should display 0x55
-LATA = 0x55;
-
-while(1)
-    {
-    if (CarRec != 0){
-        LATA = CarRec;
-        CarRec = 0;
+        saml_touch_click_update(&Status);
+        
+#ifdef SAML_BTN_TEST
+        LATAbits.LATA0 = Status.Btn1;
+        LATAbits.LATA1 = Status.Btn2;
+#endif
+   
+#ifdef SAML_SLIDER_TEST
+        if (Status.SliderStatus == 1)        LATA = Status.SliderValue;
+        else LATA = 0;
+#endif 
+        saml_touch_click_clear();
     }
     }
 }					
-#endif  // !TEST_RX_IRQ
-//------------------------------------------------------------------------------
 

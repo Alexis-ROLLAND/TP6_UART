@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=lib_mcu_ap6.c lib_uart_pic24_ll.c mcu_ap6_main_test.c
+SOURCEFILES_QUOTED_IF_SPACED=lib_uart_pic24_ll.c lib_SamL_TC.c lib_test_SamlTC.c mcu_ap6_Saml_TouchClick_main_test.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/lib_mcu_ap6.o ${OBJECTDIR}/lib_uart_pic24_ll.o ${OBJECTDIR}/mcu_ap6_main_test.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/lib_mcu_ap6.o.d ${OBJECTDIR}/lib_uart_pic24_ll.o.d ${OBJECTDIR}/mcu_ap6_main_test.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/lib_uart_pic24_ll.o ${OBJECTDIR}/lib_SamL_TC.o ${OBJECTDIR}/lib_test_SamlTC.o ${OBJECTDIR}/mcu_ap6_Saml_TouchClick_main_test.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/lib_uart_pic24_ll.o.d ${OBJECTDIR}/lib_SamL_TC.o.d ${OBJECTDIR}/lib_test_SamlTC.o.d ${OBJECTDIR}/mcu_ap6_Saml_TouchClick_main_test.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/lib_mcu_ap6.o ${OBJECTDIR}/lib_uart_pic24_ll.o ${OBJECTDIR}/mcu_ap6_main_test.o
+OBJECTFILES=${OBJECTDIR}/lib_uart_pic24_ll.o ${OBJECTDIR}/lib_SamL_TC.o ${OBJECTDIR}/lib_test_SamlTC.o ${OBJECTDIR}/mcu_ap6_Saml_TouchClick_main_test.o
 
 # Source Files
-SOURCEFILES=lib_mcu_ap6.c lib_uart_pic24_ll.c mcu_ap6_main_test.c
+SOURCEFILES=lib_uart_pic24_ll.c lib_SamL_TC.c lib_test_SamlTC.c mcu_ap6_Saml_TouchClick_main_test.c
 
 
 
@@ -95,42 +95,54 @@ MP_LINKER_FILE_OPTION=,--script=p24FJ128GA010.gld
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/lib_mcu_ap6.o: lib_mcu_ap6.c  .generated_files/571dcfd8e0507869a09a0377dde8c24d6a694c39.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/lib_mcu_ap6.o.d 
-	@${RM} ${OBJECTDIR}/lib_mcu_ap6.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  lib_mcu_ap6.c  -o ${OBJECTDIR}/lib_mcu_ap6.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib_mcu_ap6.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
-	
 ${OBJECTDIR}/lib_uart_pic24_ll.o: lib_uart_pic24_ll.c  .generated_files/81c15a34678361060a9b90be0135ef7ed4b6822f.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/lib_uart_pic24_ll.o.d 
 	@${RM} ${OBJECTDIR}/lib_uart_pic24_ll.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  lib_uart_pic24_ll.c  -o ${OBJECTDIR}/lib_uart_pic24_ll.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib_uart_pic24_ll.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
-${OBJECTDIR}/mcu_ap6_main_test.o: mcu_ap6_main_test.c  .generated_files/a64eae84850df5cb5381ca34ac87f9627169f14c.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
+${OBJECTDIR}/lib_SamL_TC.o: lib_SamL_TC.c  .generated_files/d97bc4b04115fa35505afd7721ff5842e49f8639.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/mcu_ap6_main_test.o.d 
-	@${RM} ${OBJECTDIR}/mcu_ap6_main_test.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  mcu_ap6_main_test.c  -o ${OBJECTDIR}/mcu_ap6_main_test.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/mcu_ap6_main_test.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	@${RM} ${OBJECTDIR}/lib_SamL_TC.o.d 
+	@${RM} ${OBJECTDIR}/lib_SamL_TC.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  lib_SamL_TC.c  -o ${OBJECTDIR}/lib_SamL_TC.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib_SamL_TC.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/lib_test_SamlTC.o: lib_test_SamlTC.c  .generated_files/d91aad7a1b328e7e49b42b27d6140e947d3b903a.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/lib_test_SamlTC.o.d 
+	@${RM} ${OBJECTDIR}/lib_test_SamlTC.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  lib_test_SamlTC.c  -o ${OBJECTDIR}/lib_test_SamlTC.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib_test_SamlTC.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/mcu_ap6_Saml_TouchClick_main_test.o: mcu_ap6_Saml_TouchClick_main_test.c  .generated_files/8b35b58b8ce1eaca81e7824024a648541c4c2fd8.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/mcu_ap6_Saml_TouchClick_main_test.o.d 
+	@${RM} ${OBJECTDIR}/mcu_ap6_Saml_TouchClick_main_test.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  mcu_ap6_Saml_TouchClick_main_test.c  -o ${OBJECTDIR}/mcu_ap6_Saml_TouchClick_main_test.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/mcu_ap6_Saml_TouchClick_main_test.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
 else
-${OBJECTDIR}/lib_mcu_ap6.o: lib_mcu_ap6.c  .generated_files/304fbd87bba8ec10b121a4cba9cd9164f5e06e9f.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/lib_mcu_ap6.o.d 
-	@${RM} ${OBJECTDIR}/lib_mcu_ap6.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  lib_mcu_ap6.c  -o ${OBJECTDIR}/lib_mcu_ap6.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib_mcu_ap6.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
-	
 ${OBJECTDIR}/lib_uart_pic24_ll.o: lib_uart_pic24_ll.c  .generated_files/d5fc0bdfbdd82823703d6e05f4c91b7d2532ad20.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/lib_uart_pic24_ll.o.d 
 	@${RM} ${OBJECTDIR}/lib_uart_pic24_ll.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  lib_uart_pic24_ll.c  -o ${OBJECTDIR}/lib_uart_pic24_ll.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib_uart_pic24_ll.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
-${OBJECTDIR}/mcu_ap6_main_test.o: mcu_ap6_main_test.c  .generated_files/4eb577be8b44602e0b5bb23dfa70af39f5b94797.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
+${OBJECTDIR}/lib_SamL_TC.o: lib_SamL_TC.c  .generated_files/6df831d2c4b4cf76fbfe9703173cfb122c1b30e5.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/mcu_ap6_main_test.o.d 
-	@${RM} ${OBJECTDIR}/mcu_ap6_main_test.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  mcu_ap6_main_test.c  -o ${OBJECTDIR}/mcu_ap6_main_test.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/mcu_ap6_main_test.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	@${RM} ${OBJECTDIR}/lib_SamL_TC.o.d 
+	@${RM} ${OBJECTDIR}/lib_SamL_TC.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  lib_SamL_TC.c  -o ${OBJECTDIR}/lib_SamL_TC.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib_SamL_TC.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/lib_test_SamlTC.o: lib_test_SamlTC.c  .generated_files/feb5e20f16eee5548b9d9329ccc7dff419dead85.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/lib_test_SamlTC.o.d 
+	@${RM} ${OBJECTDIR}/lib_test_SamlTC.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  lib_test_SamlTC.c  -o ${OBJECTDIR}/lib_test_SamlTC.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib_test_SamlTC.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/mcu_ap6_Saml_TouchClick_main_test.o: mcu_ap6_Saml_TouchClick_main_test.c  .generated_files/55dc04f6e1c42e767ee46fde4cf33cd5c4b3a54b.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/mcu_ap6_Saml_TouchClick_main_test.o.d 
+	@${RM} ${OBJECTDIR}/mcu_ap6_Saml_TouchClick_main_test.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  mcu_ap6_Saml_TouchClick_main_test.c  -o ${OBJECTDIR}/mcu_ap6_Saml_TouchClick_main_test.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/mcu_ap6_Saml_TouchClick_main_test.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
 endif
 
