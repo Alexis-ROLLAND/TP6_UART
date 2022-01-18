@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=lib_mcu_ap6.c lib_uart_pic24_ll.c mcu_ap6_main_test.c
+SOURCEFILES_QUOTED_IF_SPACED=lib_uart_pic24_ll.c lib_gps.c mcu_ap6_GPS_main_test.c lib_test_gps.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/lib_mcu_ap6.o ${OBJECTDIR}/lib_uart_pic24_ll.o ${OBJECTDIR}/mcu_ap6_main_test.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/lib_mcu_ap6.o.d ${OBJECTDIR}/lib_uart_pic24_ll.o.d ${OBJECTDIR}/mcu_ap6_main_test.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/lib_uart_pic24_ll.o ${OBJECTDIR}/lib_gps.o ${OBJECTDIR}/mcu_ap6_GPS_main_test.o ${OBJECTDIR}/lib_test_gps.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/lib_uart_pic24_ll.o.d ${OBJECTDIR}/lib_gps.o.d ${OBJECTDIR}/mcu_ap6_GPS_main_test.o.d ${OBJECTDIR}/lib_test_gps.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/lib_mcu_ap6.o ${OBJECTDIR}/lib_uart_pic24_ll.o ${OBJECTDIR}/mcu_ap6_main_test.o
+OBJECTFILES=${OBJECTDIR}/lib_uart_pic24_ll.o ${OBJECTDIR}/lib_gps.o ${OBJECTDIR}/mcu_ap6_GPS_main_test.o ${OBJECTDIR}/lib_test_gps.o
 
 # Source Files
-SOURCEFILES=lib_mcu_ap6.c lib_uart_pic24_ll.c mcu_ap6_main_test.c
+SOURCEFILES=lib_uart_pic24_ll.c lib_gps.c mcu_ap6_GPS_main_test.c lib_test_gps.c
 
 
 
@@ -95,42 +95,54 @@ MP_LINKER_FILE_OPTION=,--script=p24FJ128GA010.gld
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/lib_mcu_ap6.o: lib_mcu_ap6.c  .generated_files/571dcfd8e0507869a09a0377dde8c24d6a694c39.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/lib_mcu_ap6.o.d 
-	@${RM} ${OBJECTDIR}/lib_mcu_ap6.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  lib_mcu_ap6.c  -o ${OBJECTDIR}/lib_mcu_ap6.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib_mcu_ap6.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
-	
 ${OBJECTDIR}/lib_uart_pic24_ll.o: lib_uart_pic24_ll.c  .generated_files/81c15a34678361060a9b90be0135ef7ed4b6822f.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/lib_uart_pic24_ll.o.d 
 	@${RM} ${OBJECTDIR}/lib_uart_pic24_ll.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  lib_uart_pic24_ll.c  -o ${OBJECTDIR}/lib_uart_pic24_ll.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib_uart_pic24_ll.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
-${OBJECTDIR}/mcu_ap6_main_test.o: mcu_ap6_main_test.c  .generated_files/a64eae84850df5cb5381ca34ac87f9627169f14c.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
+${OBJECTDIR}/lib_gps.o: lib_gps.c  .generated_files/da992a6c171b2e4a556daed9d8b1d3c7c6bfe147.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/mcu_ap6_main_test.o.d 
-	@${RM} ${OBJECTDIR}/mcu_ap6_main_test.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  mcu_ap6_main_test.c  -o ${OBJECTDIR}/mcu_ap6_main_test.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/mcu_ap6_main_test.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	@${RM} ${OBJECTDIR}/lib_gps.o.d 
+	@${RM} ${OBJECTDIR}/lib_gps.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  lib_gps.c  -o ${OBJECTDIR}/lib_gps.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib_gps.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/mcu_ap6_GPS_main_test.o: mcu_ap6_GPS_main_test.c  .generated_files/8fca473bc4e8fcbfda0d4999ba06a4de2ba8c7f6.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/mcu_ap6_GPS_main_test.o.d 
+	@${RM} ${OBJECTDIR}/mcu_ap6_GPS_main_test.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  mcu_ap6_GPS_main_test.c  -o ${OBJECTDIR}/mcu_ap6_GPS_main_test.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/mcu_ap6_GPS_main_test.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/lib_test_gps.o: lib_test_gps.c  .generated_files/82b747d211ec1497b3446293298cc46223f1d59a.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/lib_test_gps.o.d 
+	@${RM} ${OBJECTDIR}/lib_test_gps.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  lib_test_gps.c  -o ${OBJECTDIR}/lib_test_gps.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib_test_gps.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
 else
-${OBJECTDIR}/lib_mcu_ap6.o: lib_mcu_ap6.c  .generated_files/304fbd87bba8ec10b121a4cba9cd9164f5e06e9f.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/lib_mcu_ap6.o.d 
-	@${RM} ${OBJECTDIR}/lib_mcu_ap6.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  lib_mcu_ap6.c  -o ${OBJECTDIR}/lib_mcu_ap6.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib_mcu_ap6.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
-	
 ${OBJECTDIR}/lib_uart_pic24_ll.o: lib_uart_pic24_ll.c  .generated_files/d5fc0bdfbdd82823703d6e05f4c91b7d2532ad20.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/lib_uart_pic24_ll.o.d 
 	@${RM} ${OBJECTDIR}/lib_uart_pic24_ll.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  lib_uart_pic24_ll.c  -o ${OBJECTDIR}/lib_uart_pic24_ll.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib_uart_pic24_ll.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
-${OBJECTDIR}/mcu_ap6_main_test.o: mcu_ap6_main_test.c  .generated_files/4eb577be8b44602e0b5bb23dfa70af39f5b94797.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
+${OBJECTDIR}/lib_gps.o: lib_gps.c  .generated_files/b06457232783b10a95f93e2bf8d41b10ac9ec748.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/mcu_ap6_main_test.o.d 
-	@${RM} ${OBJECTDIR}/mcu_ap6_main_test.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  mcu_ap6_main_test.c  -o ${OBJECTDIR}/mcu_ap6_main_test.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/mcu_ap6_main_test.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	@${RM} ${OBJECTDIR}/lib_gps.o.d 
+	@${RM} ${OBJECTDIR}/lib_gps.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  lib_gps.c  -o ${OBJECTDIR}/lib_gps.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib_gps.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/mcu_ap6_GPS_main_test.o: mcu_ap6_GPS_main_test.c  .generated_files/8efe4f866362fcf86273791321bf60738eed47f2.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/mcu_ap6_GPS_main_test.o.d 
+	@${RM} ${OBJECTDIR}/mcu_ap6_GPS_main_test.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  mcu_ap6_GPS_main_test.c  -o ${OBJECTDIR}/mcu_ap6_GPS_main_test.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/mcu_ap6_GPS_main_test.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/lib_test_gps.o: lib_test_gps.c  .generated_files/5bce730c9395549daab071d2c7df92e966f706d3.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/lib_test_gps.o.d 
+	@${RM} ${OBJECTDIR}/lib_test_gps.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  lib_test_gps.c  -o ${OBJECTDIR}/lib_test_gps.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib_test_gps.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
 endif
 

@@ -7,7 +7,7 @@
  *
  */
 
-#include "lib_mcu_ap6.h"   // Inclusion du fichier .h "Applicatif" renommé
+#include "lib_test_gps.h"   // Inclusion du fichier .h "Applicatif" renommé
 //------------------------------------------------------------------------------
 /**
  * Insérer Ici les bits de configuration pour le MCU 						  
@@ -40,12 +40,13 @@
 
 
 //------------------------------------------------------------------------------
-#ifdef  TEST_PUTCH
+#ifdef  TEST_RX_GPS1
 /* Programme Principal			*/
+tRMC_MINIMAL_DATA Data;
 int main(void)
 {
 // Variables locales au main
-    uint8_t Car;
+uint16_t    Nb = 0;    
     
 
 
@@ -53,53 +54,19 @@ Initialiser();		// Appel fonction d'initialisation
 
 while(1)
     {
-    for (Car = 'A';Car <= 'Z';Car++){
-        uart_putch(USED_UART, Car, true);
-        __delay_ms(500);
+    if (gps_check() == GPS_PENDING_FRAME)
+    {
+        
+        if (gps_decode(&Data) == GPS_OK)
+        {
+            Nb++;
+            LATA++;
+        }
+        gps_clear();
     }
+    
+    
     }
 }					
 #endif  // !TEST_PUTCH
 //------------------------------------------------------------------------------
-#ifdef  TEST_PUTS
-/* Programme Principal			*/
-int main(void)
-{
-// Variables locales au main
-    
-Initialiser();		// Appel fonction d'initialisation
-
-while(1)
-    {
-    uart_puts(USED_UART,(uint8_t*)"Hello World\n");
-    
-    __delay_ms(500);
-    
-    }
-}					
-
-#endif  // !TEST_PUTS
-//------------------------------------------------------------------------------
-#ifdef TEST_RX_IRQ
-/* Programme Principal			*/
-extern uint8_t  CarRec;
-int main(void)
-{
-// Variables locales au main
-    
-Initialiser();		// Appel fonction d'initialisation
-
-// For checking, at startup LEDs should display 0x55
-LATA = 0x55;
-
-while(1)
-    {
-    if (CarRec != 0){
-        LATA = CarRec;
-        CarRec = 0;
-    }
-    }
-}					
-#endif  // !TEST_RX_IRQ
-//------------------------------------------------------------------------------
-
