@@ -59,5 +59,31 @@ int main(void)
         }
     
 }					
-#endif  // !TEST_A
+#endif  // !TEST_SEND_COMMAND
 
+#ifdef  TEST_RX_ISR
+/* Programme Principal			*/
+int main(void)
+{
+    // Variables locales au main
+    mhz16_data_t    Data;
+    uint8_t    NbData = 0;
+
+    Initialiser();		// Appel fonction d'initialisation
+    
+    while(1)
+        {
+        __delay_ms(1000);
+        
+        mhz16_start_read_gas_concentration(&SensorCfg);
+        
+        while (mhz16_get_data(&SensorCfg, &Data) != MHZ16_NEW_DATA_OK); // Waiting for new data
+        
+        LATA = ++NbData;
+        
+        
+        
+        }
+    
+}
+#endif

@@ -32,6 +32,20 @@ void Initialiser(void)
 }
 #endif // 
 
+#ifdef  TEST_RX_ISR
+void Initialiser(void)
+{
+    
+    SensorCfg.uart_id = USED_UART;
+    SensorCfg.Fosc = MHZ_8;
+    
+    mhz16_init(&SensorCfg);  
+    
+    
+    TRISA = 0xFF00;
+    LATA = 0x0000;
+}
+#endif
 
 
 

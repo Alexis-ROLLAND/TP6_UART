@@ -15,29 +15,38 @@
 
 #define MHZ16_UART   1
 #if (MHZ16_UART == 1)
-    #define GPS_RXIE    IEC0bits.U1RXIE 
-    #define GPS_RXISR   _U1RXInterrupt 
-    #define GPS_UXRXREG U1RXREG
-    #define GPS_RXIF    IFS0bits.U1RXIF  
+    #define MHZ16_RXIE    IEC0bits.U1RXIE 
+    #define MHZ16_RXISR   _U1RXInterrupt 
+    #define MHZ16_UXRXREG U1RXREG
+    #define MHZ16_RXIF    IFS0bits.U1RXIF  
 #elif (MHZ16_UART == 2)
-    #define GPS_RXIE    IEC1bits.U2RXIE 
-    #define GPS_RXISR   _U2RXInterrupt
-    #define GPS_UXRXREG U2RXREG
-    #define GPS_RXIF    IFS1bits.U2RXIF
+    #define MHZ16_RXIE    IEC1bits.U2RXIE 
+    #define MHZ16_RXISR   _U2RXInterrupt
+    #define MHZ16_UXRXREG U2RXREG
+    #define MHZ16_RXIF    IFS1bits.U2RXIF
 #endif   
 
 //-----------------------------------------------------------------------------
 #define MHZ16_CMD_FRAME_SIZE            9
+#define MHZ16_RESP_FRAME_SIZE           8   // usefull size (SOF not included)
 
 #define MHZ16_SOF                       0xFF
 #define MHZ16_SENSOR_ID                 0x01
 #define MHZ16_CMD_READ_SENSOR           0x86
 #define MHZ16_CHECK_CMD_READ_SENSOR     0x79
 //-----------------------------------------------------------------------------
+#ifndef RX_STATUS_TYPE
+#define RX_STATUS_TYPE
+typedef enum    {RX_IDLE,WAIT_START,RX_ON,WAIT_RD_BUFFER} tRxStatus;
+#endif
 
 typedef enum{
             MHZ16_OK,
-            MHZ16_ERROR} mhz16_err_t;
+            MHZ16_ERROR,
+            MHZ16_BUSY,
+            MHZ16_NO_NEW_DATA,
+            MHZ16_NEW_DATA_OK
+            } mhz16_err_t;
 
 typedef enum {
                 MHZ_2 = 0,      /**< 2MHz Osc (Fcy = 1e6) */
@@ -53,6 +62,10 @@ typedef struct{
     supported_fosc_t Fosc;
     } mhz16_config_t;            
 
+    typedef struct{
+        uint16_t    Gaz_Concentration;
+        int8_t      Temperature;
+    } mhz16_data_t;
 /**
  * @brief  
  * 
@@ -92,7 +105,7 @@ mhz16_err_t   mhz16_init(mhz16_config_t *pCfg);
  * @return   
  *
  */
- 
+ mhz16_err_t   mhz16_get_data(mhz16_config_t *pCfg,mhz16_data_t *pData);
  
 
 #endif
