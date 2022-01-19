@@ -45,8 +45,7 @@
 tRMC_MINIMAL_DATA Data;
 int main(void)
 {
-// Variables locales au main
-uint16_t    Nb = 0;    
+// Variables locales au main 
     
 
 
@@ -59,8 +58,8 @@ while(1)
         
         if (gps_decode(&Data) == GPS_OK)
         {
-            Nb++;
-            LATA++;
+           LATA++;
+            
         }
         gps_clear();
     }
