@@ -53,7 +53,7 @@ int main(void)
     while(1)
         {
         for (Car = 'A';Car <= 'Z';Car++){
-        uart_putch(USED_UART, Car, true);
+        uart_putch(USED_UART, Car, UART_TX_BLOCKING_MODE);
         __delay_ms(500);
         }
     }

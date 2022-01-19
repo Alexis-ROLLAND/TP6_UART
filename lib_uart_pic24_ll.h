@@ -16,13 +16,7 @@ typedef enum    {   _UART1,     /**< Value for UART1 */
                     _UART2}     /**< Value for UART2 */
                 uart_id_t;
                
-/** Definition d'un type booléen bool_t
- * Version sécurisée par macro guard
- * */
-#ifndef _BOOL_T_TYPE_
-#define _BOOL_T_TYPE_                
-typedef enum    {true, false} bool_t;
-#endif
+typedef enum    {UART_TX_NON_BLOCKING_MODE, UART_TX_BLOCKING_MODE} uart_tx_blocking_t;
 
 /** Type uart_err_t
  * Liste les divers codes de retour des fonctions uart low level
@@ -80,7 +74,7 @@ uart_err_t  uart_set_rx_interrupt(uart_id_t uart_id,uart_config_t *pUartCFG);
   * @return     UART_OK on success or UART_TX_FIFO_FULL in non blocking mode if Tx FIFO is full or UART_UNKNOWN_UART
   *
   */
-uart_err_t      uart_putch(uart_id_t uart_id, uint8_t Car, bool_t BlockingMode);
+uart_err_t      uart_putch(uart_id_t uart_id, uint8_t Car, uart_tx_blocking_t BlockingMode);
 
 //------------------------------------------------------------------------------
  /**
