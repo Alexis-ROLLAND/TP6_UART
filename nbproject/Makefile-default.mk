@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=lib_mcu_ap6.c lib_uart_pic24_ll.c mcu_ap6_main_test.c
+SOURCEFILES_QUOTED_IF_SPACED=lib_uart_pic24_ll.c lib_mhz16.c lib_test_mhz16.c mcu_ap6_mhz16_main_test.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/lib_mcu_ap6.o ${OBJECTDIR}/lib_uart_pic24_ll.o ${OBJECTDIR}/mcu_ap6_main_test.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/lib_mcu_ap6.o.d ${OBJECTDIR}/lib_uart_pic24_ll.o.d ${OBJECTDIR}/mcu_ap6_main_test.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/lib_uart_pic24_ll.o ${OBJECTDIR}/lib_mhz16.o ${OBJECTDIR}/lib_test_mhz16.o ${OBJECTDIR}/mcu_ap6_mhz16_main_test.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/lib_uart_pic24_ll.o.d ${OBJECTDIR}/lib_mhz16.o.d ${OBJECTDIR}/lib_test_mhz16.o.d ${OBJECTDIR}/mcu_ap6_mhz16_main_test.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/lib_mcu_ap6.o ${OBJECTDIR}/lib_uart_pic24_ll.o ${OBJECTDIR}/mcu_ap6_main_test.o
+OBJECTFILES=${OBJECTDIR}/lib_uart_pic24_ll.o ${OBJECTDIR}/lib_mhz16.o ${OBJECTDIR}/lib_test_mhz16.o ${OBJECTDIR}/mcu_ap6_mhz16_main_test.o
 
 # Source Files
-SOURCEFILES=lib_mcu_ap6.c lib_uart_pic24_ll.c mcu_ap6_main_test.c
+SOURCEFILES=lib_uart_pic24_ll.c lib_mhz16.c lib_test_mhz16.c mcu_ap6_mhz16_main_test.c
 
 
 
@@ -95,42 +95,54 @@ MP_LINKER_FILE_OPTION=,--script=p24FJ128GA010.gld
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/lib_mcu_ap6.o: lib_mcu_ap6.c  .generated_files/571dcfd8e0507869a09a0377dde8c24d6a694c39.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/lib_mcu_ap6.o.d 
-	@${RM} ${OBJECTDIR}/lib_mcu_ap6.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  lib_mcu_ap6.c  -o ${OBJECTDIR}/lib_mcu_ap6.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib_mcu_ap6.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
-	
 ${OBJECTDIR}/lib_uart_pic24_ll.o: lib_uart_pic24_ll.c  .generated_files/81c15a34678361060a9b90be0135ef7ed4b6822f.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/lib_uart_pic24_ll.o.d 
 	@${RM} ${OBJECTDIR}/lib_uart_pic24_ll.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  lib_uart_pic24_ll.c  -o ${OBJECTDIR}/lib_uart_pic24_ll.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib_uart_pic24_ll.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
-${OBJECTDIR}/mcu_ap6_main_test.o: mcu_ap6_main_test.c  .generated_files/a64eae84850df5cb5381ca34ac87f9627169f14c.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
+${OBJECTDIR}/lib_mhz16.o: lib_mhz16.c  .generated_files/2dd8f54424f33385d6887183707fc0d95da94a50.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/mcu_ap6_main_test.o.d 
-	@${RM} ${OBJECTDIR}/mcu_ap6_main_test.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  mcu_ap6_main_test.c  -o ${OBJECTDIR}/mcu_ap6_main_test.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/mcu_ap6_main_test.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	@${RM} ${OBJECTDIR}/lib_mhz16.o.d 
+	@${RM} ${OBJECTDIR}/lib_mhz16.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  lib_mhz16.c  -o ${OBJECTDIR}/lib_mhz16.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib_mhz16.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/lib_test_mhz16.o: lib_test_mhz16.c  .generated_files/85de31920f1891e38571473822437ee97930decf.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/lib_test_mhz16.o.d 
+	@${RM} ${OBJECTDIR}/lib_test_mhz16.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  lib_test_mhz16.c  -o ${OBJECTDIR}/lib_test_mhz16.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib_test_mhz16.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/mcu_ap6_mhz16_main_test.o: mcu_ap6_mhz16_main_test.c  .generated_files/a3bd4202130a93a03a420e28bdb3127c6f2b7159.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/mcu_ap6_mhz16_main_test.o.d 
+	@${RM} ${OBJECTDIR}/mcu_ap6_mhz16_main_test.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  mcu_ap6_mhz16_main_test.c  -o ${OBJECTDIR}/mcu_ap6_mhz16_main_test.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/mcu_ap6_mhz16_main_test.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
 else
-${OBJECTDIR}/lib_mcu_ap6.o: lib_mcu_ap6.c  .generated_files/304fbd87bba8ec10b121a4cba9cd9164f5e06e9f.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/lib_mcu_ap6.o.d 
-	@${RM} ${OBJECTDIR}/lib_mcu_ap6.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  lib_mcu_ap6.c  -o ${OBJECTDIR}/lib_mcu_ap6.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib_mcu_ap6.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
-	
 ${OBJECTDIR}/lib_uart_pic24_ll.o: lib_uart_pic24_ll.c  .generated_files/d5fc0bdfbdd82823703d6e05f4c91b7d2532ad20.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/lib_uart_pic24_ll.o.d 
 	@${RM} ${OBJECTDIR}/lib_uart_pic24_ll.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  lib_uart_pic24_ll.c  -o ${OBJECTDIR}/lib_uart_pic24_ll.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib_uart_pic24_ll.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
-${OBJECTDIR}/mcu_ap6_main_test.o: mcu_ap6_main_test.c  .generated_files/4eb577be8b44602e0b5bb23dfa70af39f5b94797.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
+${OBJECTDIR}/lib_mhz16.o: lib_mhz16.c  .generated_files/3dcd54059d2e6a7ad499190f126455ab362eae10.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/mcu_ap6_main_test.o.d 
-	@${RM} ${OBJECTDIR}/mcu_ap6_main_test.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  mcu_ap6_main_test.c  -o ${OBJECTDIR}/mcu_ap6_main_test.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/mcu_ap6_main_test.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	@${RM} ${OBJECTDIR}/lib_mhz16.o.d 
+	@${RM} ${OBJECTDIR}/lib_mhz16.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  lib_mhz16.c  -o ${OBJECTDIR}/lib_mhz16.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib_mhz16.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/lib_test_mhz16.o: lib_test_mhz16.c  .generated_files/d638b9f3d48cdecb63ccd22025c101bbb41a3f80.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/lib_test_mhz16.o.d 
+	@${RM} ${OBJECTDIR}/lib_test_mhz16.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  lib_test_mhz16.c  -o ${OBJECTDIR}/lib_test_mhz16.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lib_test_mhz16.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
+	
+${OBJECTDIR}/mcu_ap6_mhz16_main_test.o: mcu_ap6_mhz16_main_test.c  .generated_files/c878c379efb05a5a4ede689afa74020b46dae49f.flag .generated_files/b9748a99b93e7c95015290f0add2198853a6828e.flag
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/mcu_ap6_mhz16_main_test.o.d 
+	@${RM} ${OBJECTDIR}/mcu_ap6_mhz16_main_test.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  mcu_ap6_mhz16_main_test.c  -o ${OBJECTDIR}/mcu_ap6_mhz16_main_test.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/mcu_ap6_mhz16_main_test.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off    -mdfp="${DFP_DIR}/xc16"
 	
 endif
 

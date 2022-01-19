@@ -7,7 +7,7 @@
  *
  */
 //------------------------------------------------------------------------------
-#include "lib_mcu_ap6.h"   // Inclusion du fichier .h "Applicatif" renommé
+#include "lib_test_mhz16.h" 
 
 //------------------------------------------------------------------------------
 /**
@@ -38,47 +38,26 @@
 
 
 /* Déclarations des variables globales 	*/
+extern mhz16_config_t  SensorCfg;
 
 
+#ifdef  TEST_SEND_COMMAND
 
-#ifdef  TEST_PUTCH
 /* Programme Principal			*/
 int main(void)
 {
     // Variables locales au main
-    uint8_t Car;
+    
 
     Initialiser();		// Appel fonction d'initialisation
 
     while(1)
         {
-        for (Car = 'A';Car <= 'Z';Car++){
-        uart_putch(USED_UART, Car, true);
-        __delay_ms(500);
+        __delay_ms(1000);
+        LATAbits.LATA0 = ~LATAbits.LATA0;
+        mhz16_start_read_gas_concentration(&SensorCfg);
         }
-    }
+    
 }					
-#endif  // !TEST_PUTCH
-
-//------------------------------------------------------------------------------
-#ifdef  TEST_PUTS
-/* Programme Principal			*/
-int main(void)
-{
-// Variables locales au main
-    
-Initialiser();		// Appel fonction d'initialisation
-
-while(1)
-    {
-    uart_puts(USED_UART,(uint8_t*)"Hello World\n");
-    
-    __delay_ms(500);
-    
-    }
-}					
-
-#endif  // !TEST_PUTS
-
-
+#endif  // !TEST_A
 
