@@ -6,13 +6,11 @@
  *  
  *
  */
-#ifndef	__LIB_MCU_AP6_H__
-#define	__LIB_MCU_AP6_H__
+#ifndef	__LIB_TEST_LIDAR_H__
+#define	__LIB_TEST_LIDAR_H__
 
 //-----------------------------------------------------------------------------
-//#define TEST_PUTCH
-//#define TEST_PUTS
-#define TEST_RX_IRQ
+#define TEST_RX
 //-----------------------------------------------------------------------------
 
 #ifndef FCY
@@ -24,9 +22,7 @@
 
 #include "lib_uart_pic24_ll.h"
 
-
 #define USED_UART _UART1
-
 
 //------------------------------------------------------------------------------
 /**
