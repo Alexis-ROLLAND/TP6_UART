@@ -85,6 +85,7 @@ typedef struct{
  * @return   
  *
  */
+ lidar_err_t    lidar_get_data(lidar_config_t *pCfg, lidar_status_t *pData);
  
  /**
  * @brief  

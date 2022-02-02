@@ -37,7 +37,7 @@
 
 
 /* Déclarations des variables globales 	*/
-
+lidar_config_t  lidar_cfg;
 
 //------------------------------------------------------------------------------
 #ifdef  TEST_RX
@@ -45,15 +45,17 @@
 int main(void)
 {
 // Variables locales au main
-   
-    
+    lidar_status_t  Data;
+    lidar_err_t     Res;
 
 
 Initialiser();		// Appel fonction d'initialisation
 
 while(1)
     {
-    
+    __delay_ms(500);
+    Res = lidar_get_data(&lidar_cfg,&Data);
+    LATA = Data.Distance;
     }
 }					
 #endif  // !TEST_RX

@@ -8,13 +8,14 @@
  */
 
 
-#include "lib_test_lidar.h" // Inclusion du fichier .h "Applicatif" renommé
+#include "lib_test_lidar.h"
+#include "lib_lidar.h" // Inclusion du fichier .h "Applicatif" renommé
 
 /* Directives de compilation - Macros		*/
 
 
 /* Déclarations des variables globales 	*/
-
+extern lidar_config_t  lidar_cfg;
 
 
 /*	Implémentation du code */
@@ -22,13 +23,14 @@
 #ifdef  TEST_RX
 void Initialiser(void)
 {
-    uart_config_t   uart_cfg;
     
-    uart_cfg.UxMODE = 0x8000;   // BRG Low Speed Mode
-    uart_cfg.UxSTA = 0x0400;
-    uart_cfg.UxBRG = 25;    // 9600bps @Fcy=4MHz
     
-    uart_init(USED_UART, &uart_cfg);
+    lidar_cfg.Fosc = MHZ_32;
+    lidar_cfg.uart_id = _UART1;
+    
+    lidar_init(&lidar_cfg);
+    
+    TRISA = 0xFF00;
 }
 #endif // !TEST_RX
 //------------------------------------------------------------------------------

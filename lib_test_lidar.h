@@ -20,7 +20,7 @@
 #include <libpic30.h>
 #include <xc.h>
 
-#include "lib_uart_pic24_ll.h"
+#include "lib_lidar.h"
 
 #define USED_UART _UART1
 

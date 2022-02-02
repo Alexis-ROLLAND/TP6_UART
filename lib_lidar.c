@@ -14,7 +14,7 @@
 
 
 /* Déclarations des variables globales 	*/
-const uint16_t  tabBRG[4]={16, 25, 34, 69};
+const uint16_t  tabBRG[4]={16, 25, 34, 69}; // 115200bps
 
 uart_config_t   uart_cfg;
 
@@ -30,12 +30,28 @@ lidar_status_t  lidar_data;
 /*	Implémentation du code */
 lidar_err_t    lidar_init(lidar_config_t *pCfg)
 {
+    uart_err_t  Res;
     
+    uart_cfg.UxMODE = 0x8008;   // High Speed BRG
+    uart_cfg.UxSTA = 0x0400;
+    uart_cfg.UxBRG = tabBRG[pCfg->Fosc];
+    uart_cfg.RxIrqPrio = 4;
     
+    Res = uart_init(pCfg->uart_id, &uart_cfg);
+    if (Res != UART_OK) return LIDAR_ERROR;
+    
+    Res = uart_set_rx_interrupt(pCfg->uart_id, &uart_cfg);
+    if (Res != UART_OK) return LIDAR_ERROR;
     return LIDAR_OK;
 }
 //-----------------------------------------------------------------------------
-
+lidar_err_t    lidar_get_data(lidar_config_t *pCfg, lidar_status_t *pData)
+{
+    pData->Distance = lidar_data.Distance;
+    pData->Strength = lidar_data.Strength;
+    pData->IntegTime = lidar_data.IntegTime;
+    return LastChk;
+}
 //-----------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------
