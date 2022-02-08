@@ -78,13 +78,13 @@ typedef struct{
     // Latitude
     uint8_t   latDeg; // Latitude degrees
     uint8_t   latMin; // Latitude minutes
-    unsigned int    latDec; // decimal part of minutes
+    uint16_t  latDec; // decimal part of minutes
     uint8_t   latNS;  // either 'N' = North or 'S' = South
     
     // Longitude
     uint8_t   longDeg; // Latitude degrees
     uint8_t   longMin; // Latitude minutes
-    unsigned int    longDec; // decimal part of minutes
+    uint16_t  longDec; // decimal part of minutes
     uint8_t   longEW;  // either  either 'E' = East or 'W' = West
     
     // Validité données
