@@ -12,6 +12,12 @@
 #define	__LIB_UART_PIC24LL_H__
 #include <xc.h>
 
+#ifndef	NULL
+#define	NULL    (void*)0
+#endif
+
+#define UTX_BF_MASK (0x0001<<9)
+
 typedef enum    {   _UART1,     /**< Value for UART1 */
                     _UART2}     /**< Value for UART2 */
                 uart_id_t;
@@ -38,7 +44,24 @@ typedef struct{
     uint16_t    UxSTA;  /**< UxSTA value */
     uint16_t    UxBRG;  /**< UxBRG value */
     uint8_t     RxIrqPrio;    /**< Rx Interrupt priority level (between 0 and 7) */
-} uart_config_t;
+}   uart_config_t;
+
+ /** Type uart_desc_t
+ * UART descritor type
+ * 
+ */
+typedef struct{
+    uart_id_t   uartID;
+    uint8_t     RxIrqPrio;
+    uint16_t    *pUxMODE;
+    uint16_t    *pUxSTA;
+    uint16_t    *pUxBRG;
+    uint16_t    *pUxTXREG;
+    uint16_t    *pUxRXREG;
+    
+}   uart_desc_t;
+
+
 
 
 //------------------------------------------------------------------------------
@@ -47,47 +70,48 @@ typedef struct{
  * 
  * @param[in]   uart_id
  * @param[in]   Adress of an uart_config_t variable (holding the desired configuration)  
+ * @param[out]  Adress of an uart_desc_t variable (descriptor, set by the init function) 
  * 
  * @return      UART_OK on success, UART_UNKNOWN_UART otherwise 
  *
  */
-uart_err_t  uart_init(uart_id_t uart_id, uart_config_t *pUartCFG);
+uart_err_t  uart_init(uart_id_t uart_id, uart_config_t *pUartCFG, uart_desc_t *pUart);
 
 //------------------------------------------------------------------------------
  /**
  * @brief  
  * 
- * @param	
+ * @param[in]   Address of an initialized uart descriptor	
  * 
  * @return  UART_OK, UART_UNKNOWN_UART or UART_BAD_PRIO  
  *
  */
-uart_err_t  uart_set_rx_interrupt(uart_id_t uart_id,uart_config_t *pUartCFG);
+uart_err_t  uart_set_rx_interrupt(uart_desc_t *pUart);
 
 //------------------------------------------------------------------------------
  /**
   * @brief  Send one character on a choosen UART 
   * 
-  * @param[in]   uart_id
+  * @param[in]   Address of an initialized uart descriptor
   * @param[in]   Character to send
   * @param[in]   Send in blocking mode or non blocking mode 	
   *  
-  * @return     UART_OK on success or UART_TX_FIFO_FULL in non blocking mode if Tx FIFO is full or UART_UNKNOWN_UART
+  * @return     UART_OK on success or UART_TX_FIFO_FULL in non blocking mode if Tx FIFO is full
   *
   */
-uart_err_t      uart_putch(uart_id_t uart_id, uint8_t Car, uart_tx_blocking_t BlockingMode);
+uart_err_t      uart_putch(uart_desc_t *pUart, uint8_t Car, uart_tx_blocking_t BlockingMode);
 
 //------------------------------------------------------------------------------ 
  /**
  * @brief  Sends a C Formatted string, blocking mode only
  * 
-  * @param[in]   uart_id
+ * @param[in]   Address of an initialized uart descriptor
  * @param[in]   Address of the string to send	
  * 
- * @return   UART_OK or UART_UNKNOWN_UART
+ * @return   UART_OK
  *
  */
-uart_err_t      uart_puts(uart_id_t uart_id, uint8_t *pString);
+uart_err_t      uart_puts(uart_desc_t *pUart, uint8_t *pString);
 
 //------------------------------------------------------------------------------
  /**

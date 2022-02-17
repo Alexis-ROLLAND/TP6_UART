@@ -25,7 +25,7 @@
 #include "lib_uart_pic24_ll.h"
 
 
-#define USED_UART _UART1
+#define USED_UART _UART2
 
 
 //------------------------------------------------------------------------------

@@ -37,7 +37,7 @@
 
 
 /* Déclarations des variables globales 	*/
-
+extern  uart_desc_t myUart;
 
 //------------------------------------------------------------------------------
 #ifdef  TEST_PUTCH
@@ -54,7 +54,7 @@ Initialiser();		// Appel fonction d'initialisation
 while(1)
     {
     for (Car = 'A';Car <= 'Z';Car++){
-        uart_putch(USED_UART, Car, true);
+        uart_putch(&myUart, Car, UART_TX_BLOCKING_MODE);
         __delay_ms(500);
     }
     }
@@ -71,7 +71,7 @@ Initialiser();		// Appel fonction d'initialisation
 
 while(1)
     {
-    uart_puts(USED_UART,(uint8_t*)"Hello World\n");
+    uart_puts(&myUart,(uint8_t*)"Hello World\n");
     
     __delay_ms(500);
     
